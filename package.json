@@ -1,0 +1,60 @@
+{
+  "name": "cy-referral-network",
+  "version": "0.1.0",
+  "description": "内推关系管理工具",
+  "main": "dist/main/index.js",
+  "scripts": {
+    "dev": "concurrently \"npm:dev:renderer\" \"npm:dev:electron\"",
+    "dev:renderer": "vite --host 0.0.0.0",
+    "dev:electron": "wait-on http://localhost:28314 && tsc -p tsconfig.main.json && electron .",
+    "build": "npm run build:main && npm run build:renderer",
+    "build:main": "tsc -p tsconfig.main.json",
+    "build:renderer": "vite build",
+    "dist": "npm run build && electron-builder"
+  },
+  "dependencies": {
+    "@vitejs/plugin-react": "^4.3.4",
+    "antd": "^5.23.0",
+    "better-sqlite3": "^12.10.0",
+    "d3": "^7.9.0",
+    "dayjs": "^1.11.13",
+    "zustand": "^5.0.3",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-router-dom": "^7.1.1"
+  },
+  "devDependencies": {
+    "@types/better-sqlite3": "^7.6.12",
+    "@types/d3": "^7.4.3",
+    "@types/node": "^22.10.5",
+    "@types/react": "^18.3.18",
+    "@types/react-dom": "^18.3.5",
+    "concurrently": "^9.1.2",
+    "electron": "^34.0.0",
+    "electron-builder": "^25.1.8",
+    "typescript": "^5.7.2",
+    "vite": "^6.0.7",
+    "wait-on": "^8.0.1"
+  },
+  "build": {
+    "appId": "com.cy.referralnetwork",
+    "productName": "内推关系管理工具",
+    "directories": {
+      "output": "release"
+    },
+    "files": [
+      "dist/**",
+      "renderer/dist/**",
+      "package.json"
+    ],
+    "mac": {
+      "target": "dmg"
+    },
+    "win": {
+      "target": "nsis"
+    },
+    "linux": {
+      "target": "AppImage"
+    }
+  }
+}
