@@ -41,3 +41,14 @@ export interface Reminder {
   remindAt: string;
   status: ReminderStatus;
 }
+
+export interface ReminderWithContact extends Reminder {
+  contactName: string;
+  contactAvatar?: string;
+}
+
+export interface GroupedReminders {
+  overdue: ReminderWithContact[];
+  today: ReminderWithContact[];
+  thisWeek: ReminderWithContact[];
+}

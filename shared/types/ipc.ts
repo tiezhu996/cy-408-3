@@ -1,4 +1,5 @@
-import { Contact, GraphNode, Referral, Reminder } from './entities';
+import { Contact, GraphNode, GroupedReminders, Referral, Reminder } from './entities';
+import { ReminderStatus } from './enums';
 
 export interface IPCSchema {
   'contacts:list': () => Promise<Contact[]>;
@@ -9,4 +10,6 @@ export interface IPCSchema {
   'graph:save': (node: GraphNode) => Promise<GraphNode>;
   'reminders:list': () => Promise<Reminder[]>;
   'reminders:save': (reminder: Reminder) => Promise<Reminder>;
+  'reminders:groupedList': () => Promise<GroupedReminders>;
+  'reminders:updateStatus': (id: string, status: ReminderStatus) => Promise<void>;
 }

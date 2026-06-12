@@ -1,10 +1,12 @@
 import { Layout, Menu, Typography } from 'antd';
+import { BellOutlined } from '@ant-design/icons';
 import { createHashRouter, Navigate, Outlet, useNavigate } from 'react-router-dom';
 import { Contacts } from '../pages/Contacts';
 import { ContactDetail } from '../pages/ContactDetail';
 import { Dashboard } from '../pages/Dashboard';
 import { Graph } from '../pages/Graph';
 import { ReferralBoard } from '../pages/ReferralBoard';
+import { ReminderCenter } from '../pages/ReminderCenter';
 
 function AppLayout() {
   const navigate = useNavigate();
@@ -18,6 +20,7 @@ function AppLayout() {
           onClick={(item) => navigate(item.key)}
           items={[
             { key: '/dashboard', label: '仪表板' },
+            { key: '/reminders', label: '提醒中心', icon: <BellOutlined /> },
             { key: '/contacts', label: '联系人列表' },
             { key: '/referrals', label: '内推看板' },
             { key: '/graph', label: '人脉图谱' }
@@ -38,6 +41,7 @@ export const router = createHashRouter([
     children: [
       { index: true, element: <Navigate to="/dashboard" replace /> },
       { path: 'dashboard', element: <Dashboard /> },
+      { path: 'reminders', element: <ReminderCenter /> },
       { path: 'contacts', element: <Contacts /> },
       { path: 'contacts/:id', element: <ContactDetail /> },
       { path: 'referrals', element: <ReferralBoard /> },

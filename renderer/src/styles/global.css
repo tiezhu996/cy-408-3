@@ -57,3 +57,26 @@ body {
   border-radius: 8px;
   background: #f8fafc;
 }
+
+.reminder-center__header {
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.reminder-section--overdue {
+  border-left: 3px solid #ff4d4f;
+}
+
+.reminder-section--today {
+  border-left: 3px solid #1677ff;
+}
+
+.reminder-section--thisWeek {
+  border-left: 3px solid #52c41a;
+}
+
+.reminder-item .ant-list-item-action > li {
+  padding-inline-start: 8px;
+}
